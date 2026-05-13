@@ -55,12 +55,15 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.12.0")
 
-    // SUNMI printer SDK — optional. The driver auto-detects whether the
-    // SDK is on the classpath and switches between the real implementation
-    // and a no-op stub. Download SunmiPrinterLibrary.aar from
-    // https://developer.sunmi.com and drop it into app/libs/ to enable.
-    // The build succeeds either way; without the AAR you still get a
-    // working WebView-only APK (window.print() fallback).
+    // SUNMI Printer SDK — high-level API (Printer, LineApi, CommandApi,
+    // CashDrawerApi, etc.). Hosted on Maven Central, so no special repo
+    // needed beyond what's already declared in settings.gradle.kts.
+    // The driver guards every call so a non-Sunmi device just reports
+    // isPrinterReady = false and lets the web fall back to window.print().
+    implementation("com.sunmi:printerx:1.0.17")
+
+    // Drop-in slot for additional vendor SDK AARs (Star, Epson, future
+    // Sunmi versions) — see app/libs/README.md.
     compileOnly(fileTree("libs") { include("*.aar") })
     runtimeOnly(fileTree("libs") { include("*.aar") })
 }
