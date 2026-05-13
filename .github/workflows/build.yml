@@ -20,8 +20,9 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Gradle wrapper
-        run: gradle wrapper --gradle-version 8.7
+      # Wrapper is committed at the AGP-compatible Gradle version (8.13+).
+      # No need to regenerate it on every run — that step actually *broke*
+      # the build by downgrading the wrapper to 8.7 below AGP's minimum.
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
