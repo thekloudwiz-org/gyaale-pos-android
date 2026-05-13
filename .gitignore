@@ -1,0 +1,26 @@
+# Built/generated
+*.iml
+.gradle/
+local.properties
+.idea/
+.vscode/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aar
+*.aab
+
+# Keystore (NEVER commit)
+*.jks
+*.keystore
+keystore.properties
+release-keystore.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

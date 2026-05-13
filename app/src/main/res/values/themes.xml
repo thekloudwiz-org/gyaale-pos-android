@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.GyaalePOS" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#d4861a</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="android:statusBarColor">#d4861a</item>
+        <item name="android:navigationBarColor">#ffffff</item>
+    </style>
+</resources>
