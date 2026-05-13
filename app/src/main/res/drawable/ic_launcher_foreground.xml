@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Brand "G" centered in the safe zone (24-84). -->
+    <group android:scaleX="1.0" android:scaleY="1.0" android:translateX="22" android:translateY="22">
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M32,4 C16.5,4 4,16.5 4,32 C4,47.5 16.5,60 32,60 C42.2,60 51.0,54.7 56.0,46.7 L56.0,32.0 L32.0,32.0 L32.0,40.0 L44.0,40.0 C40.6,46.0 35.0,50.0 28.0,50.0 C18.0,50.0 10.0,42.0 10.0,32.0 C10.0,22.0 18.0,14.0 28.0,14.0 C32.5,14.0 36.6,15.7 39.7,18.4 L46.4,11.7 C41.6,7.0 36.0,4.0 32.0,4.0 Z" />
+    </group>
+</vector>

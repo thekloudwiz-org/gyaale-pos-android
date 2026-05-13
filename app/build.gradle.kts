@@ -32,20 +32,35 @@ android {
         jvmTarget = "17"
     }
 
+    // The dev box may be running gradle on a much newer JDK than AGP 8.x
+    // supports (we've seen JDK 25 here). Pin the toolchain to 17 and let
+    // the foojay resolver in settings.gradle.kts auto-download it.
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+
     buildFeatures {
         viewBinding = true
+        // AGP 8.x disables BuildConfig generation by default. We use
+        // BuildConfig.DEBUG and BuildConfig.VERSION_NAME in MainActivity.
+        buildConfig = true
     }
 }
 
 dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.12.0")
 
-    // SUNMI printer SDK — talks to the built-in thermal printer on T1, T2,
-    // V1s, V2, V2 Pro, P2, and other Sunmi devices that ship one.
-    // Bound at runtime; on non-Sunmi hardware the bind fails and the
-    // driver falls back to a no-op (or future ESC/POS-over-Bluetooth driver).
-    implementation("com.sunmi:sunmiui:1.1.7")
-    implementation("com.sunmi:printerlibrary:1.0.18")
+    // SUNMI printer SDK — optional. The driver auto-detects whether the
+    // SDK is on the classpath and switches between the real implementation
+    // and a no-op stub. Download SunmiPrinterLibrary.aar from
+    // https://developer.sunmi.com and drop it into app/libs/ to enable.
+    // The build succeeds either way; without the AAR you still get a
+    // working WebView-only APK (window.print() fallback).
+    compileOnly(fileTree("libs") { include("*.aar") })
+    runtimeOnly(fileTree("libs") { include("*.aar") })
 }
