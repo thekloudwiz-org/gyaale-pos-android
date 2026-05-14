@@ -9,10 +9,15 @@ android {
 
     defaultConfig {
         applicationId = "com.thekloudwiz.gyaale.pos"
-        minSdk = 23  // Android 6 — covers every SUNMI device shipped since 2019
+        // Android 5.1 (API 22) covers the V1-B18 mobile POS in addition to every
+        // SUNMI device shipped since 2019. The V1 hardware predates the Android-6
+        // floor we'd otherwise prefer; nothing the wrapper does (JavascriptInterface,
+        // evaluateJavascript, setWebContentsDebuggingEnabled) requires API 23+, and
+        // the PrinterX SDK we depend on still targets the V1's printer service.
+        minSdk = 22
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
     }
 
     buildTypes {
